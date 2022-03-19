@@ -22,17 +22,15 @@ mongoose.connect(URL,{
 })
 app.use(cors());
 
-//app.get('/',(req,res)=>{
-  //  res.send("hello");
-//});
+app.get('/',(req,res)=>{
+    res.send("hello");
+});
 
 
 app.post('/items' , async(req,res)=>{
     const register= await new Login(req.body);
     
     console.log(register);
-    const salt = await bcrypt.genSalt(5);
-    register.password = await bcrypt.hash(register.password,salt);
     const insertR = await register.save();
     console.log(insertR);
     res.send(insertR);
