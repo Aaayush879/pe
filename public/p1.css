@@ -1,0 +1,153 @@
+body{
+    background-color: none;
+}
+html {
+    background: url(backgroundsign.jpg) no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+  }
+
+.S{
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.A {
+    position:relative;
+    height: 400px;
+    width: 1000px;
+    background-color: #ffffff;
+    display: flex;
+    overflow: hidden;
+    margin-top: 200px;
+   
+}
+.A .imgA, .B .imgB{
+    display: flex;
+    height: 450px;
+    width: 50%;
+    position: relative;
+    transition: 1s ease-in-out;
+}
+.A .imgA img {
+    object-fit: cover;
+}
+.A .formA, .B .formB{
+    height: 400px;
+    width: 50%;
+    position: relative;
+    top: 0px ;
+    right: 0px;
+    transition: 1s ease-in-out;
+    background-color: #ffffff;
+    text-align: center;
+    font-family: georgia;
+}
+
+.B .imgB img{
+    object-fit: cover;
+    width: 500px;
+}
+
+.B{
+    position:absolute;
+    height: 500px;
+    width: 1000px;
+    margin-top: 200px;
+    display: flex;
+    text-align: center;
+    overflow: hidden;
+}
+.h{
+    position: relative;
+    font-size: 40px;
+    font-weight: 500;
+   
+}
+.S a{
+    text-decoration: none;
+    color: black;
+}
+.B input, .A input {
+    box-sizing: border-box;
+    font-size: 20px;
+    border: none;
+    border-color: lightgrey;
+    border-radius: 5px ;
+    height: 40px;
+    width: 80%;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.A input[type = "submit"]{
+    background-color: #e2ffe1;
+    letter-spacing: 2px;
+    
+}
+.B input[type = "submit"]{
+    background-color: #d5f9f7;
+    letter-spacing: 2px;
+    
+}
+.S .A {
+    pointer-events: none;
+}
+.S.active .A{
+    pointer-events:initial;
+}
+.S.active .B {
+    pointer-events: none;
+}
+.S .B{
+    pointer-events:initial;
+}
+
+.S .B .formB{
+    left: 0;
+}
+.S.active .B .formB{
+    left: -100%;
+}
+.S .B .imgB{
+    left:0;
+}
+.S.active .B .imgB{
+    left: 100%;
+}
+
+
+.S .A .formA{
+    left: -100%;
+}
+.S.active .A .formA{
+    left: 0;
+}
+.S .A .imgA{
+    left:100%;
+}
+.S.active .A .imgA{
+    left: 0;
+}
+@media ( max-width: 1000px){
+    .S {
+        max-width: 1000px;
+    }
+    .S .A .imgA{
+        display: none;
+    }
+    .S .B .imgB{
+        visibility: hidden;
+        display: none;
+    }
+    .S .A .formA, .S .B .formB{
+        width: 100%;
+    }
+     
+    
+}
+    

@@ -1,52 +1,60 @@
-const express = require('express');
-const mongoose= require('mongoose');
-const bodyparser = require('body-parser');
-const app = express();
-const bcrypt = require('bcrypt');
-
 const port = process.env.PORT||2000;
-const Login = require('./model/Register');
 const cors = require('cors');
 const URL='mongodb+srv://ayushh:ayushhh@cluster0.yqrvv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-app.use(bodyparser.json());
-app.use(express.json());
+var express = require("express")
+var bodyParser = require("body-parser")
+var mongoose = require("mongoose")
+
+const app = express()
+
+app.use(bodyParser.json())
+app.use(express.static('public'))
+app.use(bodyParser.urlencoded({
+    extended:true
+}))
 
 mongoose.connect(URL,{
-    useNewUrlParser:true,
-    useUnifiedTopology:true
-    
-}).then(()=>{
-    console.log(`sucessfully connected dp`);
-}).catch((e)=>{
-    console.log(e);
-    
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+
+var db = mongoose.connection;
+
+db.on('error',()=>console.log("Error in Connecting to Database"));
+db.once('open',()=>console.log("Connected to Database"))
+app.get("/",(req,res)=>{
+    return res.redirect('p1.html');
 })
-app.use(cors());
+app.post("/items",(req,res)=>{
+    var name = req.body.name;
+    var email = req.body.email;
+    var password = req.body.password;
 
-app.get('/',(req,res)=>{
-    res.send("hello");
-});
+    var data = {
+        "name": name,
+        "email" : email,
+        "password" : password
+    }
 
+    db.collection('users').insertOne(data,(err,collection)=>{
+        if(err){
+            throw err;
+        }
+        console.log("Record Inserted Successfully");
+        console.log(data);
+    });
 
-app.post('/items' , async(req,res)=>{
-    const register= await new Login(req.body);
-    
-    console.log(register);
-    const insertR = await register.save();
-    console.log(insertR);
-    res.send(insertR);
-        
-   
-    
-});
+    return res.redirect('sucess.html')
+
+})
 app.post("/signin",async(req,res)=>{
     try{
         const email = req.body.email;
         const password = req.body.password;
-        const user = await Login.findOne({email:email});
+        const user = await db.collection('users').findOne({email:email});
         if(user.password==password){
-            res.send(`welcome ${user.namee}`);
-            console.log(`welcome ${user.namee}`);
+            res.send(`welcome ${user.name}`);
+            console.log(`welcome ${user.name}`);
         }
         else{
             res.send('wrong password');
@@ -60,12 +68,7 @@ app.post("/signin",async(req,res)=>{
     }
     
 })   
- app.get('/items',(req,res,next)=>{
-     Login.find({})
-     .then(data => res.json(data))
-     .catch(next)
 
-}); 
 
     
 
