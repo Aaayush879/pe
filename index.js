@@ -19,6 +19,7 @@ mongoose.connect(URL,{
     console.log(`sucessfully connected dp`);
 }).catch((e)=>{
     console.log(e);
+    
 })
 app.use(cors());
 
