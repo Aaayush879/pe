@@ -7,12 +7,11 @@
     </title>
     <meta charset="UTF-8">
     <link rel= "stylesheet" type="text/css" href="p1.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
     <meta name="viewport" content="width=device-width", initial-scale = "1.0">
 </head>
 <body>
-    <div class="S">/
+
+    <div class="S">
         <div class="A">
             <div class="imgA">
                 <img src="https://pranav5060.github.io/DSN-project-2/img/img-4.jpg" >
@@ -25,9 +24,9 @@
                             <br>
                             <input type="password"  id="password" name="password" placeholder="Password" required />
                             <br>
-                            <input type="submit" value="Submit" id="submit" />    
+                            <input type="submit" value="Submit" id="submit" />     
                         </form>
-                        <p class="sw">Don't have an account ? <a href= "#" onclick="form()" >Sign up </a></p>
+                        <p>Don't have an account ? <a href= "#" onclick="form()" >Sign up </a></p>
             </div>
 
         </div>
@@ -36,17 +35,17 @@
             
 
             <div class="formB">
-                <p class = "h"> SIGN UP</p>
+                <h1 class = 'h text-danger '> SIGN UP </h1>
                 <form action="/items" method="POST" >
                     <input type="text"  id="name" name="name" placeholder="Name"  />
                     <br>
-                    <input type="text"  id="email" name="email" placeholder="Email" required />
+                    <input type="text"  id="email" name="email" placeholder="Email"  />
                     <br>
                     
-                    <input type="password"  id="password" name="password" placeholder="Password" required />
+                    <input type="password"  id="password" name="password" placeholder="Password"  />
                     <br>
                     <input type="submit" value="Submit" id="submit" />
-                    <p class="sw">Already have an account ? <a href="#" onclick="form()" >Sign in </a></p>
+                    <p>Already have an account ? <a href="#" onclick="form()" >Sign in </a></p>
                 </form>
             </div>
             <div class="imgB">
@@ -54,7 +53,7 @@
             </div>
 
         </div>
-    </div>  
+    </div>    
     </body>
     <script>
         function form(){
@@ -63,4 +62,4 @@
         }
         console.log(email)
     </script>
-</html>
+    </html>
