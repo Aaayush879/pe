@@ -53,8 +53,8 @@ app.post("/signin",async(req,res)=>{
         const password = req.body.password;
         const user = await db.collection('users').findOne({email:email});
         if(user.password==password){
-            res.send(`welcome ${user.name}`);
-            console.log(`welcome ${user.name}`);
+            
+            return res.redirect('Cart/Index.html')
         }
         else{
             res.send('wrong password');
